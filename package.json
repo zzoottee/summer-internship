@@ -1,0 +1,14 @@
+{
+  "name": "tl-admin-panel",
+  "version": "1.0.0",
+  "description": "Admin panel with SSR for updating advantages section",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "multer": "^2.2.0"
+  }
+}

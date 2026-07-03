@@ -1,0 +1,338 @@
+{
+  "heroTitle": "Стабильно растем<br>и принимаем новые вызовы<br>TravelTech индустрии",
+  "advantages": [
+    {
+      "titleText": "с 2008 года",
+      "titleImage": "",
+      "description": "создаем инструменты\r\nдля отельеров"
+    },
+    {
+      "titleText": "300+",
+      "titleImage": "",
+      "description": "сотрудников в техотделе\r\nи более 700 в компании"
+    },
+    {
+      "titleText": "12 000+",
+      "titleImage": "",
+      "description": "клиентов работают с нами"
+    },
+    {
+      "titleText": "топ-50",
+      "titleImage": "",
+      "description": "в рейтинге работодателей hh.ru 2022-2024 гг."
+    },
+    {
+      "titleText": ">1,5 млн",
+      "titleImage": "",
+      "description": "гостей в месяц бронируют через TravelLine"
+    },
+    {
+      "titleText": "300+",
+      "titleImage": "",
+      "description": "интеграций со сторонними сервисами"
+    },
+    {
+      "titleText": "",
+      "titleImage": "./Работа в TravelLine Tech_files/tl-logo.svg",
+      "description": "аккредитованная IT-компания"
+    },
+    {
+      "titleText": "",
+      "titleImage": "./Работа в TravelLine Tech_files/tl-logo.svg",
+      "description": "серебро в рейтинге лучших работодателей Forbes 2024 г."
+    }
+  ],
+  "teamSection": {
+    "title": "Любим и бережем свою команду",
+    "description": "300+ человек, которые вдохновляют своими достижениями"
+  },
+  "teamMembers": [
+    {
+      "name": "Алексей Герасимов",
+      "position": "СТО",
+      "photo": "./Работа в TravelLine Tech_files/zjpczcqzikerwej1coy74ti6y7sb0y9d.png"
+    },
+    {
+      "name": "Юра Костин",
+      "position": "СРО",
+      "photo": "./Работа в TravelLine Tech_files/rsx07xrge1cz7ql0gw8j4ao3fca0z7x0.png"
+    },
+    {
+      "name": "Ваня Потехин",
+      "position": "старший руководитель проектов",
+      "photo": "./Работа в TravelLine Tech_files/72mm50028lx702598mu3o564qcbtlxn4.png"
+    },
+    {
+      "name": "Костя Дмитриев",
+      "position": "специалист по информационным системам",
+      "photo": "./Работа в TravelLine Tech_files/elpr32rtbthyfs96gyv3e4kl16tasho9.png"
+    },
+    {
+      "name": "Лена Мочалова",
+      "position": "руководитель HR-отдела",
+      "photo": "./Работа в TravelLine Tech_files/mbplaw8v373gdxkb6ii9saccgsjghzlv.png"
+    },
+    {
+      "name": "Гасан Агаев",
+      "position": "руководитель проекта",
+      "photo": "./Работа в TravelLine Tech_files/lp4sz53lkyjv8p483o9kt4ikpe2xs8pk.png"
+    },
+    {
+      "name": "Таня Глазырина",
+      "position": "продуктовый дизайнер",
+      "photo": "./Работа в TravelLine Tech_files/9m2v37w8bboj9zsr34ohimbzboi2rbej.png"
+    },
+    {
+      "name": "Саша Очеев",
+      "position": "инженер-программист",
+      "photo": "./Работа в TravelLine Tech_files/aqkl6fr9dl37nsbgbck489ltq9gaxjwj.png"
+    },
+    {
+      "name": "Настя Волкова",
+      "position": "руководитель отдела дизайна",
+      "photo": "./Работа в TravelLine Tech_files/3ht0rqk20ni0ox2vb7uqafl4b4d43h2w.png"
+    },
+    {
+      "name": "Оля Рядова",
+      "position": "руководитель отдела аналитики",
+      "photo": "./Работа в TravelLine Tech_files/lp0xwm3awi8twhvqovjfzlca8eboax6u.png"
+    },
+    {
+      "name": "Женя Гермогенов",
+      "position": "старший руководитель проектов",
+      "photo": "./Работа в TravelLine Tech_files/dmjg21l9b1oqioh6y3bsdmsuo73wwasu.png"
+    },
+    {
+      "name": "Игорь Егошин",
+      "position": "старший инженер-программист",
+      "photo": "./Работа в TravelLine Tech_files/0g73x2njkshf9qmujyub0hjp9zl87v1w.png"
+    },
+    {
+      "name": "Никита Тарасов",
+      "position": "Младший программист",
+      "photo": "/uploads/1782750338110-216400051.JPG"
+    }
+  ],
+  "brands": [
+    {
+      "name": "Catherine art",
+      "image": "./Работа в TravelLine Tech_files/catherine-art.svg"
+    },
+    {
+      "name": "Cosmos",
+      "image": "./Работа в TravelLine Tech_files/cosmos.svg"
+    },
+    {
+      "name": "Helvetia",
+      "image": "./Работа в TravelLine Tech_files/helvetia.svg"
+    },
+    {
+      "name": "Ohta park",
+      "image": "./Работа в TravelLine Tech_files/ohta-park.svg"
+    },
+    {
+      "name": "Русь",
+      "image": "./Работа в TravelLine Tech_files/rus.svg"
+    },
+    {
+      "name": "Sochi park",
+      "image": "./Работа в TravelLine Tech_files/sochi-park.svg"
+    },
+    {
+      "name": "Премиум парк",
+      "image": "./Работа в TravelLine Tech_files/premium-park.svg"
+    },
+    {
+      "name": "Акваклуб",
+      "image": "./Работа в TravelLine Tech_files/aquaclub.svg"
+    },
+    {
+      "name": "РЖД здоровье",
+      "image": "./Работа в TravelLine Tech_files/rzd-health.svg"
+    },
+    {
+      "name": "1",
+      "image": "/uploads/1782749396593-491298624.png"
+    }
+  ],
+  "directions": [
+    {
+      "name": "Backend",
+      "content": "<p>Разрабатываем мозг клиентских и платформенных сервисов компании</p>\n<ul>\n    <li>Проектирование архитектуры, разработка и поддержка серверной части</li>\n    <li>Работа с реляционными и нереляционными базами данных</li>\n    <li>Проектирование и оптимизация быстрых, безопасных API</li>\n</ul>\n<p>Хостим все в Российских дата-центрах на своем железе в приватном облаке на Hyper-V кластерах.</p>",
+      "technologies": [
+        {
+          "techName": "RabbitMQ",
+          "techImage": "./Работа в TravelLine Tech_files/hz.png"
+        },
+        {
+          "techName": "Tarantool",
+          "techImage": "./Работа в TravelLine Tech_files/tarantool.png"
+        },
+        {
+          "techName": "C#",
+          "techImage": "./Работа в TravelLine Tech_files/cs.png"
+        },
+        {
+          "techName": "SQL",
+          "techImage": "./Работа в TravelLine Tech_files/sql.png"
+        },
+        {
+          "techName": "Redis",
+          "techImage": "./Работа в TravelLine Tech_files/redis.png"
+        },
+        {
+          "techName": "PostgreSQL",
+          "techImage": "./Работа в TravelLine Tech_files/postgresql.png"
+        },
+        {
+          "techName": "ClickHouse",
+          "techImage": "./Работа в TravelLine Tech_files/clickhouse.png"
+        },
+        {
+          "techName": ".NET",
+          "techImage": "./Работа в TravelLine Tech_files/net.png"
+        }
+      ]
+    },
+    {
+      "name": "Frontend",
+      "content": "<p>Основной проект B2C фронтенда - форма бронирования, который используют порядка</p>\n<p>миллиона пользователей в месяц.</p>\n<p>В настоящий момент параллельно происходят два процесса:</p>\n<p>1) поддержка и развитие проекта по бизнес-запросам</p>\n<p>2) переписывание проекта с AngularJS на современный стек, основанный на React.</p>\n<p>Каждым из этих процессов занимается отдельная команда. Основная задача «команды</p>\n<p>переписывания» - постепенно разработать новую версию проекта, при этом каждый релиз</p>\n<p>сохраняя существующее поведение интерфейса. В этом ей помогает команда тестировщиков</p>\n<p>и внушительный объём скриншотных E2E-тестов.</p>\n<p>Разрабатываем новую платформу Reactor на базе TypeScript + React. Она позволит</p>\n<p>продуктовым командам быстро разрабатывать и поддерживать современные SPA фронтенд</p>\n<p>приложения с качественным UX.</p>",
+      "technologies": [
+        {
+          "techName": "React 19",
+          "techImage": "./Работа в TravelLine Tech_files/react.png"
+        },
+        {
+          "techName": "TypeScript",
+          "techImage": "./Работа в TravelLine Tech_files/typescript.png"
+        },
+        {
+          "techName": "Webpack",
+          "techImage": "./Работа в TravelLine Tech_files/webpack.png"
+        },
+        {
+          "techName": "Vite",
+          "techImage": "./Работа в TravelLine Tech_files/vite.png"
+        },
+        {
+          "techName": "Jest",
+          "techImage": "./Работа в TravelLine Tech_files/jest.png"
+        },
+        {
+          "techName": "Testing Library",
+          "techImage": "./Работа в TravelLine Tech_files/testing-library.png"
+        },
+        {
+          "techName": "SASS",
+          "techImage": "./Работа в TravelLine Tech_files/sass.png"
+        }
+      ]
+    },
+    {
+      "name": "Тестирование",
+      "content": "<p>В команде тестирования внимательные и дотошные специалисты, которые стремятся к</p>\n<p>совершенству во всем. Если для тебя качество - это приоритет в работе и личной</p>\n<p>жизни, то мы сработаемся.</p>\n<p>Нам важно влиять на продукт, с которым мы работаем. Инженеры тестирования участвуют</p>\n<p>на всех этапах создания продуктов: от анализа требований до деплоя в продакшен. У</p>\n<p>каждого есть возможность вносить свои предложения и улучшать процессы.</p>\n<p>Стэк инструментов:</p>\n<ul>\n    <li>Java + Selenoid + Maven + TestNG + Git</li>\n    <li>Jenkins</li>\n    <li>Test IT</li>\n    <li>Postman/Swagger</li>\n    <li>Fiddler</li>\n    <li>ELK</li>\n</ul>",
+      "technologies": [
+        {
+          "techName": "Swagger",
+          "techImage": "./Работа в TravelLine Tech_files/swagger.png"
+        },
+        {
+          "techName": "GIT",
+          "techImage": "./Работа в TravelLine Tech_files/git.png"
+        },
+        {
+          "techName": "Java",
+          "techImage": "./Работа в TravelLine Tech_files/java.png"
+        },
+        {
+          "techName": "Selenium",
+          "techImage": "./Работа в TravelLine Tech_files/selenium.png"
+        },
+        {
+          "techName": "TestNG",
+          "techImage": "./Работа в TravelLine Tech_files/testng.png"
+        },
+        {
+          "techName": "Test IT",
+          "techImage": "./Работа в TravelLine Tech_files/testit.png"
+        },
+        {
+          "techName": "Fiddler",
+          "techImage": "./Работа в TravelLine Tech_files/fiddler.png"
+        },
+        {
+          "techName": "Jenkins",
+          "techImage": "./Работа в TravelLine Tech_files/jenkins.png"
+        },
+        {
+          "techName": "Postman",
+          "techImage": "./Работа в TravelLine Tech_files/postman.png"
+        },
+        {
+          "techName": "Stack",
+          "techImage": "./Работа в TravelLine Tech_files/stack.png"
+        }
+      ]
+    },
+    {
+      "name": "Проектирование",
+      "content": "<p>Команда проектирует интерфейсы и опыт взаимодействия отельеров и путешественников с</p>\n<p>нашими компонентами. Каждый проектировщик закреплен за проектом и работает с полным</p>\n<p>погружением.</p>\n<p>Поддерживаем две дизайн-системы: Reactor – для личного кабинета отельера, Alma - для</p>\n<p>инструментов, которыми пользуются путешественники.</p>\n<p>В работе используем Figma, Яндекс. Взгляд для тестов на пользователях, Appcues для</p>\n<p>онбординга и баннеров в ЛК. Периодически ездим в отели, чтобы понять как процессы</p>\n<p>происходят в реальной жизни и радуемся, когда удается упростить процессы.</p>\n<p>Организуем митапы, ездим на дизайн-события и ведем телеграм-канал.</p>\n<p>Еще мы увлеченные люди – коллекционеры, строители своих домов, музыканты, спортсмены</p>\n<p>и любители вписаться в челленджи.</p>\n<p>Вдохновляемся красотой и порядком. Хорошие интерфейсы спасут мир!</p>",
+      "technologies": [
+        {
+          "techName": "Figma",
+          "techImage": "./Работа в TravelLine Tech_files/figma.png"
+        }
+      ]
+    },
+    {
+      "name": "Аналитика",
+      "content": "<p>Аналитики упорядочивают хаос и развеивают неопределенность. Помогают командам</p>\n<p>принимать решения на основе данных.</p>\n<ul>\n    <li>Шарят в матане и анализе (от простых до аб-тестов с bootstrap и causal</li>\n</ul>\n<p>inference)</p>\n<ul>\n    <li>Программируют на Python + VSCode/JupiterNotebook</li>\n    <li>Строят отчеты Power BI + Metabase (и в Excel тоже)</li>\n    <li>Выгружают данные с помощью MS SQL + ClickHouse</li>\n</ul>\n<p>А еще мы разрабатываем собственные аналитические инструменты (например, у нас есть</p>\n<p>свои системы логирования действий пользователей)</p>",
+      "technologies": [
+        {
+          "techName": "Python",
+          "techImage": "./Работа в TravelLine Tech_files/python.png"
+        },
+        {
+          "techName": "MS SQL Server",
+          "techImage": "./Работа в TravelLine Tech_files/mssql.png"
+        },
+        {
+          "techName": "ClickHouse",
+          "techImage": "./Работа в TravelLine Tech_files/clickhouse.png"
+        }
+      ]
+    },
+    {
+      "name": "Безопасность",
+      "content": "<p>Мы обеспечиваем безопасность сложных систем и продуктов, гарантируя надежную защиту</p>\n<p>для клиентов и сотрудников TravelLine. Наши решения соответствуют высоким стандартам</p>\n<p>информационной безопасности (ИБ). Применяем смелые и инновационные подходы.</p>\n<p>Что делаем внутри компании:</p>\n<ul>\n    <li>разрабатываем и внедряем требования ИБ</li>\n    <li>консультируем и обучаем по тематике ИБ</li>\n    <li>проводим аудиты на соответствие принятым мерам по защите информации</li>\n    <li>расследуем инциденты ИБ</li>\n    <li>анализируем защищенность разрабатываемых в компании проектов</li>\n</ul>\n<p>Наши технологии:</p>\n<p>Секретны настолько, что мы не можем о них рассказать.</p>",
+      "technologies": []
+    }
+  ],
+  "vacancies": [
+    {
+      "title": "Senior Site Reliability Engineer (SRE)",
+      "address": "удаленно",
+      "url": "https://hh.ru/vacancy/132518636"
+    },
+    {
+      "title": "Аналитик данных (финансовое направление)",
+      "address": "удаленно",
+      "url": "https://hh.ru/vacancy/132543183"
+    },
+    {
+      "title": "Python Developer AI team (в офис, г. Йошкар-Ола)",
+      "address": "Йошкар-Ола",
+      "url": "https://hh.ru/vacancy/134599368"
+    },
+    {
+      "title": "Python Developer AI team (в офис, г. Йошкар-Ола)",
+      "address": "Йошкар-Ола",
+      "url": "https://hh.ru/vacancy/134599368"
+    }
+  ],
+  "contactForm": {
+    "heading": "Напиши нам",
+    "description": "Если заполнишь форму,<br><br>наш прекрасный эйчар с тобой свяжется (может быть даже покажет своего кота)",
+    "submitText": "Отправить"
+  }
+}

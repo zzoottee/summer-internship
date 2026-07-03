@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Панель управления</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 30px;
+            background-color: #f4f6f9;
+            color: #333;
+        }
+
+        .section-block {
+            background: #fff;
+            padding: 20px;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+            align-items: stretch;
+            background: #fdfdfd;
+            padding: 10px;
+            border: 1px dashed #ccc;
+            border-radius: 4px;
+        }
+
+        .order-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            justify-content: center;
+        }
+
+        input[type="text"],
+        textarea {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            flex: 1;
+            font-family: inherit;
+            resize: vertical;
+        }
+
+        button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .btn-add {
+            background-color: #27ae60;
+            color: white;
+            margin-top: 10px;
+        }
+
+        .btn-remove {
+            background-color: #c0392b;
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+
+        .btn-submit {
+            background-color: #2980b9;
+            color: white;
+            font-size: 16px;
+            padding: 10px 25px;
+            display: block;
+            margin-top: 20px;
+        }
+
+        .btn-order {
+            background-color: #7f8c8d;
+            color: white;
+            padding: 4px 8px;
+            font-size: 12px;
+            border-radius: 3px;
+        }
+
+        .btn-order:hover {
+            background-color: #95a5a6;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Админ-панель</h1>
+    <a href="/" target="_blank">Открыть публичную страницу</a>
+    <hr>
+
+    <!-- СЕКЦИЯ ДЛЯ БЛОКА HERO -->
+    <div class="section-block">
+        <h2>Управление заголовком</h2>
+        <form action="/admin/save-hero" method="POST">
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px; font-weight: bold;">Текст заголовка</label>
+                <textarea name="heroTitle" rows="4"
+                    style="width: 100%; box-sizing: border-box;"><%= db.heroTitle.replace(/<br>/g, '\n') %></textarea>
+            </div>
+            <button type="submit" class="btn-submit" style="margin-top: 0;">Сохранить заголовок</button>
+        </form>
+    </div>
+
+    <!-- СЕКЦИЯ ДЛЯ БЛОКА СТАТИСТИКИ -->
+    <div class="section-block">
+        <h2>Управление блоком «Статистика»</h2>
+        <form action="/admin/save-advantages" method="POST">
+            <div id="advantages-container">
+                <% db.advantages.forEach(function(item) { %>
+                    <div class="form-group">
+                        <div class="order-controls">
+                            <button type="button" class="btn-order" onclick="moveUp(this)">▲</button>
+                            <button type="button" class="btn-order" onclick="moveDown(this)">▼</button>
+                        </div>
+                        <input type="text" name="titleText" value="<%= item.titleText %>"
+                            placeholder="Текст заголовка">
+                        <input type="text" name="titleImage" value="<%= item.titleImage %>"
+                            placeholder="Или путь к логотипу">
+                        <textarea name="description" rows="2"
+                            placeholder="Описание карточки"><%= item.description.replace(/<br>/g, '\n') %></textarea>
+                        <button type="button" class="btn-remove" onclick="this.parentElement.remove()">Удалить</button>
+                    </div>
+                <% }); %>
+            </div>
+            <button type="button" class="btn-add" id="add-advantage">Добавить</button>
+            <button type="submit" class="btn-submit">Сохранить изменения изменения статистики</button>
+        </form>
+    </div>
+
+    <!-- СЕКЦИЯ КОМАНДЫ -->
+    <div class="section-block">
+        <h2>Управление блоком «Команда»</h2>
+        <form action="/admin/save-team" method="POST" enctype="multipart/form-data" onsubmit="prepareMemberFilesIndex('team-container')">
+
+            <!-- Заголовки секции -->
+            <div style="display: flex; gap: 15px; margin-bottom: 20px;">
+                <div style="flex: 1;">
+                    <label style="display: block; margin-bottom: 5px; font-weight: bold;">Заголовок секции:</label>
+                    <textarea name="section[title]" rows="2"
+                        style="width: 100%; box-sizing: border-box;"><%= db.teamSection.title.replace(/<br>/g, '\n') %></textarea>
+                </div>
+                <div style="flex: 1;">
+                    <label style="display: block; margin-bottom: 5px; font-weight: bold;">Подзаголовок секции:</label>
+                    <textarea name="section[description]" rows="2"
+                        style="width: 100%; box-sizing: border-box;"><%= db.teamSection.description.replace(/<br>/g, '\n') %></textarea>
+                </div>
+            </div>
+
+            <!-- Список сотрудников -->
+            <label style="display: block; margin-bottom: 10px; font-weight: bold;">Список сотрудников:</label>
+            <div id="team-container">
+                <% db.teamMembers.forEach(function(member, index) { %>
+                    <div class="form-group">
+                        <div class="order-controls">
+                            <button type="button" class="btn-order" onclick="moveUp(this)">▲</button>
+                            <button type="button" class="btn-order" onclick="moveDown(this)">▼</button>
+                        </div>
+                        <textarea name="mName" rows="2" placeholder="Имя сотрудника"
+                            style="flex: 1;"><%= member.name.replace(/<br>/g, '\n') %></textarea>
+                        <textarea name="mPosition" rows="2" placeholder="Должность"
+                            style="flex: 1;"><%= member.position.replace(/<br>/g, '\n') %></textarea>
+                        <input type="text" name="mPhoto" value="<%= member.photo %>"
+                            placeholder="Путь к фото (например: ./img/photo.png)" style="flex: 1.5;">
+                        <div style="flex: 1; display: flex; flex-direction: column; gap: 4px;">
+                            <input type="file" name="memberFile" onchange="markMemberFileSelected(this)" style="font-size: 12px;">
+                            <input type="hidden" class="member-file-flag" name="hasMemberFile_<%= index %>" value="false">
+                        </div>    
+                        <button type="button" class="btn-remove" onclick="this.parentElement.remove()">Удалить</button>
+                    </div>
+                    <% }); %>
+            </div>
+
+            <button type="button" class="btn-add" id="add-member">Добавить</button>
+            <button type="submit" class="btn-submit">Сохранить изменения Команды</button>
+        </form>
+    </div>
+
+    <!-- СЕКЦИЯ КЛИЕНТОВ -->
+    <div class="section-block">
+        <h2>Управление блоком «Клиенты»</h2>
+        <form action="/admin/save-brands" method="POST" enctype="multipart/form-data" onsubmit="prepareFilesIndex('brands-container')">
+            <div id="brands-container">
+                <% db.brands.forEach(function(brand, index) { %>
+                    <div class="form-group">
+                        <div class="order-controls">
+                            <button type="button" class="btn-order" onclick="moveUp(this)">▲</button>
+                            <button type="button" class="btn-order" onclick="moveDown(this)">▼</button>
+                        </div>
+                        <input type="text" name="brandName" value="<%= brand.name %>" placeholder="Название бренда" style="flex: 1;">
+                        <input type="text" name="brandImage" value="<%= brand.image %>" placeholder="Путь к логотипу (текст)" style="flex: 1.5;">
+                        
+                        <!-- Поле загрузки файла -->
+                        <div style="flex: 1; display: flex; flex-direction: column; gap: 4px;">
+                            <input type="file" name="brandFile" onchange="markFileSelected(this)" style="font-size: 12px;">
+                            <input type="hidden" class="file-flag" name="hasFile_<%= index %>" value="false">
+                        </div>
+                        
+                        <button type="button" class="btn-remove" onclick="this.parentElement.remove()">Удалить</button>
+                    </div>
+                <% }); %>
+            </div>
+            <button type="button" class="btn-add" id="add-brand">Добавить</button>
+            <button type="submit" class="btn-submit">Сохранить изменения клиентов</button>
+        </form>
+    </div>
+
+    <!-- СЕКЦИЯ НАПРАВЛЕНИЙ -->
+    <div class="section-block">
+        <h2>Управление блоком «Направления и Технологии»</h2>
+        <div id="directions-container">
+            <% db.directions.forEach(function(dir) { %>
+                <div class="form-group direction-row" style="flex-direction: column; align-items: stretch; background: #f9f9f9; border: 2px solid #bdc3c7; padding: 15px; margin-bottom: 20px;">
+                    <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 10px;">
+                        <div class="order-controls">
+                            <button type="button" class="btn-order" onclick="moveUp(this)">▲</button>
+                            <button type="button" class="btn-order" onclick="moveDown(this)">▼</button>
+                        </div>
+                        <input type="text" class="dir-name" value="<%= dir.name %>" placeholder="Направление" style="font-weight: bold; font-size: 16px;">
+                        <button type="button" class="btn-remove" onclick="this.closest('.direction-row').remove()">Удалить направление</button>
+                    </div>
+
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 4px; font-weight: bold; font-size: 12px;">Полное описание направления:</label>
+                        <textarea class="dir-content" rows="10" style="width:100%; box-sizing: border-box;"><%= (function() {
+                            let text = dir.content || '';
+                            text = text.replace(/<\/p>/g, '\n').replace(/<\/ul>/g, '\n').replace(/<li>/g, '- ').replace(/<\/li>/g, '\n').replace(/<[^>]*>/g, '');
+                            return text.split(/\r?\n/).map(line => line.trim()).filter(line => line).join('\n');
+                        })() %></textarea>
+                    </div>
+
+                    <div style="padding-left: 20px; border-left: 3px solid #3498db;">
+                        <label style="display: block; margin-bottom: 8px; font-weight: bold; font-size: 13px;">Стек технологий:</label>
+                        <div class="tech-container">
+                            <% dir.technologies.forEach(function(tech) { %>
+                                <div class="form-group tech-row" style="background: #fff; padding: 6px; border: 1px dashed #7f8c8d; margin-bottom: 6px;">
+                                    <div class="order-controls">
+                                        <button type="button" class="btn-order" onclick="moveUp(this)">▲</button>
+                                        <button type="button" class="btn-order" onclick="moveDown(this)">▼</button>
+                                    </div>
+                                    <input type="text" class="tech-name" value="<%= tech.techName %>" placeholder="Название" style="flex: 1;">
+                                    <input type="text" class="tech-image" value="<%= tech.techImage %>" placeholder="Путь к иконке (текст)" style="flex: 1.5;">
+                                    <input type="file" class="tech-file" style="font-size: 11px; flex: 1;">
+                                    <button type="button" class="btn-remove" style="padding: 4px 10px;" onclick="this.parentElement.remove()">Удалить</button>
+                                </div>
+                            <% }); %>
+                        </div>
+                        <button type="button" class="btn-add" style="background: #3498db; padding: 4px 10px; font-size: 12px; margin-top: 5px;" onclick="addTechnologyRow(this)">+ Добавить технологию</button>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+        <button type="button" class="btn-add" id="add-direction" style="background: #8e44ad;">Добавить новое направление</button>
+        <button type="button" class="btn-submit" onclick="submitDirectionsForm()">Сохранить изменения направлений</button>
+    </div>
+
+    <!-- СЕКЦИЯ ВАКАНСИЙ -->
+    <div class="section-block">
+        <h2>Управление блоком «Вакансии»</h2>
+        <form action="/admin/save-vacancies" method="POST">
+            <div id="vacancies-container">
+                <% db.vacancies.forEach(function(vacancy) { %>
+                    <div class="form-group">
+                        <div class="order-controls">
+                            <button type="button" class="btn-order" onclick="moveUp(this)">▲</button>
+                            <button type="button" class="btn-order" onclick="moveDown(this)">▼</button>
+                        </div>
+                        <input type="text" name="vTitle" value="<%= vacancy.title %>" placeholder="Название вакансии" style="flex: 2;">
+                        <input type="text" name="vAddress" value="<%= vacancy.address %>" placeholder="Формат (например: удаленно / офис)" style="flex: 1;">
+                        <input type="text" name="vUrl" value="<%= vacancy.url %>" placeholder="Ссылка на hh.ru" style="flex: 2;">
+                        <button type="button" class="btn-remove" onclick="this.parentElement.remove()">Удалить</button>
+                    </div>
+                <% }); %>
+            </div>
+            <button type="button" class="btn-add" id="add-vacancy">Добавить</button>
+            <button type="submit" class="btn-submit">Сохранить изменения вакансий</button>
+        </form>
+    </div>
+
+    <!-- СЕКЦИЯ КОНТАКТНОЙ ФОРМЫ -->
+    <div class="section-block">
+        <h2>Управление блоком «Форма обратной связи» (Contact Form)</h2>
+        <form action="/admin/save-contact-form" method="POST">
+            <div style="margin-bottom: 12px;">
+                <label style="display: block; margin-bottom: 4px; font-weight: bold;">Заголовок формы:</label>
+                <input type="text" name="heading" value="<%= db.contactForm.heading %>" style="width: 100%; box-sizing: border-box; padding: 8px;">
+            </div>
+            
+            <div style="margin-bottom: 12px;">
+                <label style="display: block; margin-bottom: 4px; font-weight: bold;">Подзаголовок/Описание (для переноса просто нажмите Enter):</label>
+                <textarea name="description" rows="3" style="width: 100%; box-sizing: border-box;"><%= db.contactForm.description.replace(/<br>/g, '\n') %></textarea>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 4px; font-weight: bold;">Текст на кнопке отправки:</label>
+                <input type="text" name="submitText" value="<%= db.contactForm.submitText %>" style="width: 100%; box-sizing: border-box; padding: 8px;">
+            </div>
+
+            <button type="submit" class="btn-submit" style="margin-top: 0;">Сохранить параметры формы</button>
+        </form>
+    </div>
+
+    <script>
+        // Функция для перемещения элемента вверх
+        function moveUp(button) {
+            const row = button.closest('.form-group');
+            const parent = row.parentNode;
+            const previousRow = row.previousElementSibling;
+
+            if (previousRow) {
+                parent.insertBefore(row, previousRow);
+            } else {
+                parent.appendChild(row);
+            }
+        }
+
+        // Функция для перемещения элемента вниз
+        function moveDown(button) {
+            const row = button.closest('.form-group');
+            const parent = row.parentNode;
+            const nextRow = row.nextElementSibling;
+
+            if (nextRow) {
+                parent.insertBefore(row, nextRow.nextElementSibling);
+            } else {
+                parent.insertBefore(row, parent.firstElementChild);
+            }
+        }
+
+        function reindexFormFields(containerId, arrayName) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            const rows = container.querySelectorAll('.form-group');
+            
+            rows.forEach((row, index) => {
+                const inputs = row.querySelectorAll('input, textarea');
+                inputs.forEach(input => {
+                    const nameAttr = input.getAttribute('name');
+                    if (nameAttr) {
+                        const newName = nameAttr.replace(/\[\d+\]/, `[${index}]`);
+                        input.setAttribute('name', newName);
+                    }
+                });
+
+                const removeBtn = row.querySelector('.btn-remove');
+                if (removeBtn) {
+                    removeBtn.onclick = function() {
+                        row.remove();
+                        reindexFormFields(containerId, arrayName);
+                    };
+                }
+            });
+        }
+
+        function markMemberFileSelected(input) {
+            const row = input.closest('.form-group');
+            const flag = row.querySelector('.member-file-flag');
+            if (flag) {
+                flag.value = input.files.length > 0 ? "true" : "false";
+            }
+        }
+
+        function prepareMemberFilesIndex(containerId) {
+            const container = document.getElementById(containerId);
+            const rows = container.querySelectorAll('.form-group');
+            rows.forEach((row, index) => {
+                const flag = row.querySelector('.member-file-flag');
+                if (flag) {
+                    flag.setAttribute('name', `hasMemberFile_${index}`);
+                }
+            });
+        }
+
+        function markFileSelected(input) {
+            const row = input.closest('.form-group');
+            const flag = row.querySelector('.file-flag');
+            if (flag) {
+                flag.value = input.files.length > 0 ? "true" : "false";
+            }
+        }
+
+        function prepareFilesIndex(containerId) {
+            const container = document.getElementById(containerId);
+            const rows = container.querySelectorAll('.form-group');
+            rows.forEach((row, index) => {
+                const flag = row.querySelector('.file-flag');
+                if (flag) {
+                    flag.setAttribute('name', `hasFile_${index}`);
+                }
+            });
+        }
+
+        // Динамическое добавление строки технологии внутри конкретного направления
+        function addTechnologyRow(button) {
+            const container = button.previousElementSibling;
+            const div = document.createElement('div');
+            div.className = 'form-group tech-row';
+            div.style = 'background: #fff; padding: 6px; border: 1px dashed #7f8c8d; margin-bottom: 6px;';
+            div.innerHTML = `
+                <div class="order-controls">
+                    <button type="button" class="btn-order" onclick="moveUp(this)">▲</button>
+                    <button type="button" class="btn-order" onclick="moveDown(this)">▼</button>
+                </div>
+                <input type="text" class="tech-name" placeholder="Название технологии" style="flex: 1;">
+                <input type="text" class="tech-image" placeholder="Путь к иконке (текст)" style="flex: 1.5;">
+                <input type="file" class="tech-file" style="font-size: 11px; flex: 1;">
+                <button type="button" class="btn-remove" style="padding: 4px 10px;" onclick="this.parentElement.remove()">Удалить</button>
+            `;
+            container.appendChild(div);
+        }
+
+        // Cкрипт для статистики
+        document.getElementById('add-advantage').addEventListener('click', () => {
+            const container = document.getElementById('advantages-container');
+            const div = document.createElement('div');
+            div.className = 'form-group';
+            div.innerHTML = `
+                <div class="order-controls">
+                    <button type="button" class="btn-order" onclick="moveUp(this)">▲</button>
+                    <button type="button" class="btn-order" onclick="moveDown(this)">▼</button>
+                </div>
+                <input type="text" name="titleText" placeholder="Текст заголовка">
+                <input type="text" name="titleImage" placeholder="Или путь к логотипу">
+                <textarea name="description" rows="2" placeholder="Описание карточки"></textarea>
+                <button type="button" class="btn-remove" onclick="this.parentElement.remove()">Удалить</button>
+            `;
+            container.appendChild(div);
+        });
+
+        // Скрипт для сотрудников
+        document.getElementById('add-member').addEventListener('click', () => {
+            const container = document.getElementById('team-container');
+            const div = document.createElement('div');
+            div.className = 'form-group';
+            div.innerHTML = `
+                <div class="order-controls">
+                    <button type="button" class="btn-order" onclick="moveUp(this)">▲</button>
+                    <button type="button" class="btn-order" onclick="moveDown(this)">▼</button>
+                </div>
+                <textarea name="mName" rows="2" placeholder="Имя сотрудника" style="flex: 1;"></textarea>
+                <textarea name="mPosition" rows="2" placeholder="Должность" style="flex: 1;"></textarea>
+                <input type="text" name="mPhoto" placeholder="Путь к фото (текст)" style="flex: 1.5;">
+                <div style="flex: 1; display: flex; flex-direction: column; gap: 4px;">
+                    <input type="file" name="memberFile" onchange="markMemberFileSelected(this)" style="font-size: 12px;">
+                    <input type="hidden" class="member-file-flag" name="hasMemberFile_X" value="false">
+                </div>
+                <button type="button" class="btn-remove" onclick="this.parentElement.remove()">Удалить</button>
+            `;
+            container.appendChild(div);
+        });
+
+        // Скрипт для клиентов
+        document.getElementById('add-brand').addEventListener('click', () => {
+            const container = document.getElementById('brands-container');
+            const div = document.createElement('div');
+            div.className = 'form-group';
+            div.innerHTML = `
+                <div class="order-controls">
+                    <button type="button" class="btn-order" onclick="moveUp(this)">▲</button>
+                    <button type="button" class="btn-order" onclick="moveDown(this)">▼</button>
+                </div>
+                <input type="text" name="brandName" placeholder="Название бренда" style="flex: 1;">
+                <input type="text" name="brandImage" placeholder="Путь к логотипу (текст)" style="flex: 1.5;">
+                <div style="flex: 1; display: flex; flex-direction: column; gap: 4px;">
+                    <input type="file" name="brandFile" onchange="markFileSelected(this)" style="font-size: 12px;">
+                    <input type="hidden" class="file-flag" name="hasFile_X" value="false">
+                </div>
+                <button type="button" class="btn-remove" onclick="this.parentElement.remove()">Удалить</button>
+            `;
+            container.appendChild(div);
+        });
+
+        // Скрипт для направлений
+        document.getElementById('add-direction').addEventListener('click', () => {
+            const container = document.getElementById('directions-container');
+            const div = document.createElement('div');
+            div.className = 'form-group direction-row';
+            div.style = 'flex-direction: column; align-items: stretch; background: #f9f9f9; border: 2px solid #bdc3c7; padding: 15px; margin-bottom: 20px;';
+            div.innerHTML = `
+                <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 10px;">
+                    <div class="order-controls">
+                        <button type="button" class="btn-order" onclick="moveUp(this)">▲</button>
+                        <button type="button" class="btn-order" onclick="moveDown(this)">▼</button>
+                    </div>
+                    <input type="text" class="dir-name" placeholder="Направление (Например: Frontend)" style="font-weight: bold; font-size: 16px;">
+                    <button type="button" class="btn-remove" onclick="this.closest('.direction-row').remove()">Удалить направление</button>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 4px; font-weight: bold; font-size: 12px;">Полное описание направления:
+                    <textarea class="dir-content" rows="5" style="width:100%; box-sizing: border-box;"></textarea>
+                </div>
+                <div style="padding-left: 20px; border-left: 3px solid #3498db;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: bold; font-size: 13px;">Стек технологий:</label>
+                    <div class="tech-container"></div>
+                    <button type="button" class="btn-add" style="background: #3498db; padding: 4px 10px; font-size: 12px; margin-top: 5px;" onclick="addTechnologyRow(this)">+ Добавить технологию</button>
+                </div>
+            `;
+            container.appendChild(div);
+        });
+
+        // Сборка структуры и отправка формы через FormData + Fetch
+        function submitDirectionsForm() {
+            const formData = new FormData();
+            const directionsData = [];
+            
+            const dirRows = document.querySelectorAll('.direction-row');
+            let globalFileCounter = 0;
+
+            dirRows.forEach((dirRow) => {
+                const dirObj = {
+                    name: dirRow.querySelector('.dir-name').value,
+                    content: dirRow.querySelector('.dir-content').value,
+                    technologies: []
+                };
+
+                const techRows = dirRow.querySelectorAll('.tech-row');
+                techRows.forEach((techRow) => {
+                    const fileInput = techRow.querySelector('.tech-file');
+                    let fileKey = "";
+
+                    if (fileInput && fileInput.files.length > 0) {
+                        fileKey = `tech_file_${globalFileCounter}`;
+                        formData.append(fileKey, fileInput.files[0]);
+                        globalFileCounter++;
+                    }
+
+                    dirObj.technologies.push({
+                        techName: techRow.querySelector('.tech-name').value,
+                        techImage: techRow.querySelector('.tech-image').value,
+                        fileKey: fileKey // передаем ключ серверу для сопоставления
+                    });
+                });
+
+                directionsData.push(dirObj);
+            });
+
+            // Добавляем готовую JSON-структуру текстовым полем в FormData
+            formData.append('rawData', JSON.stringify(directionsData));
+
+            // Отправляем асинхронный запрос на сервер
+            fetch('/admin/save-directions', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    window.location.reload();
+                } else {
+                    console.error('Ошибка сервера при сохранении направлений:', data.error);
+                }
+            })
+            .catch(err => {
+                console.error('Сетевая ошибка при отправке запроса:', err);
+            });
+        }
+
+        // Скрипт для вакансий
+        document.getElementById('add-vacancy').addEventListener('click', () => {
+            const container = document.getElementById('vacancies-container');
+            const div = document.createElement('div');
+            div.className = 'form-group';
+            div.innerHTML = `
+                <div class="order-controls">
+                    <button type="button" class="btn-order" onclick="moveUp(this)">▲</button>
+                    <button type="button" class="btn-order" onclick="moveDown(this)">▼</button>
+                </div>
+                <input type="text" name="vTitle" placeholder="Название вакансии" style="flex: 2;">
+                <input type="text" name="vAddress" placeholder="Формат (удаленно / офис)" style="flex: 1;">
+                <input type="text" name="vUrl" placeholder="Ссылка на hh.ru" style="flex: 2;">
+                <button type="button" class="btn-remove" onclick="this.parentElement.remove()">Удалить</button>
+            `;
+            container.appendChild(div);
+        });
+    </script>
+</body>
+
+</html>
