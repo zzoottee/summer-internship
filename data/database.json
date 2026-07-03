@@ -106,11 +106,6 @@
       "name": "Игорь Егошин",
       "position": "старший инженер-программист",
       "photo": "./Работа в TravelLine Tech_files/0g73x2njkshf9qmujyub0hjp9zl87v1w.png"
-    },
-    {
-      "name": "Никита Тарасов",
-      "position": "Младший программист",
-      "photo": "/uploads/1782750338110-216400051.JPG"
     }
   ],
   "brands": [
@@ -149,10 +144,6 @@
     {
       "name": "РЖД здоровье",
       "image": "./Работа в TravelLine Tech_files/rzd-health.svg"
-    },
-    {
-      "name": "1",
-      "image": "/uploads/1782749396593-491298624.png"
     }
   ],
   "directions": [
@@ -318,11 +309,6 @@
       "title": "Аналитик данных (финансовое направление)",
       "address": "удаленно",
       "url": "https://hh.ru/vacancy/132543183"
-    },
-    {
-      "title": "Python Developer AI team (в офис, г. Йошкар-Ола)",
-      "address": "Йошкар-Ола",
-      "url": "https://hh.ru/vacancy/134599368"
     },
     {
       "title": "Python Developer AI team (в офис, г. Йошкар-Ола)",
